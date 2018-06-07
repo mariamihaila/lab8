@@ -15,15 +15,15 @@ private:
 
 
   double determineGenderFit(DateProfile partner) {
-	return (searchGender == partner.gender)? 1.0 : 0.0;
+    return (searchGender == partner.gender)? 1.0 : 0.0;
   }
 
   double determineRomanceFit(DateProfile partner) {
-	return 1.0 - abs(partner.romance - romance)/MAX_ROMANCE;
+    return 1.0 - abs(partner.romance - romance)/MAX_ROMANCE;
   }
 
   double determineFinanceFit(DateProfile partner) {
-	return 1.0 - abs(partner.finance - finance)/MAX_FINANCE;
+    return 1.0 - abs(partner.finance - finance)/MAX_FINANCE;
   }
 
   double fitValue(DateProfile partner);
@@ -31,7 +31,7 @@ private:
 public:
   DateProfile();
   DateProfile(string name, char gender, char searchGender,
-			  int romance, int finance);
+              int romance, int finance);
 
   static const int MIN_ROMANCE = 1;
   static const int MAX_ROMANCE = 10;
@@ -81,7 +81,7 @@ DateProfile::DateProfile()
 }
 
 DateProfile::DateProfile(string name, char gender, char searchGender,
-						 int romance, int finance) {
+                         int romance, int finance) {
   this->name = name;
   this->gender = gender;
   this->searchGender = searchGender;
@@ -132,7 +132,7 @@ double DateProfile::fitValue(DateProfile partner)
 {
   if (determineGenderFit(partner) == 0.0)
   {
-	return 0.0;
+    return 0.0;
   }
   return (determineRomanceFit(partner) + determineFinanceFit(partner)) / 2.0;
 }
